@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <h1>Header</h1>
-      <main className='min-h-screen'>
+      <main className='min-h-screen mx-w-width-2xl mx-auto p-6 font-primary'>
         <Outlet />
       </main>
       <h1>Footer</h1>
