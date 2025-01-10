@@ -39,3 +39,27 @@
 .html{
    scroll-behavior: smooth;
 }
+
+.swiper-button-prev, .swiper-button-next {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   z-index: 10;
+   width: 30px;
+   height: 30px;
+   background-color: rgba(0, 0, 0, 0.5);
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   cursor: pointer;
+ }
+ 
+ .swiper-button-prev {
+   left: -20px; /* Adjust for desired positioning */
+ }
+ 
+ .swiper-button-next {
+   right: -20px; /* Adjust for desired positioning */
+ }
+ 
