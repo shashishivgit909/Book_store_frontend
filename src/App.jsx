@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <main className='w-screen h-screen font-primary'>
+      <main className='min-h-screen px-4 py-6 mx-auto max-w-screen-2xl font-primary '>
         <Outlet />
       </main>
     </>

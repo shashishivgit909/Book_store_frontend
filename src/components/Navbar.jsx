@@ -8,7 +8,7 @@ import avtarImg from "../assets/avatar.png";
 import { Link, NavLink } from 'react-router-dom';
 
 function Navbar() {
-    const currentUser = true;
+    const currentUser = false;
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     const navigation = [
         { name: "Dashboard", href: "/Dashboard" },
@@ -18,7 +18,7 @@ function Navbar() {
     ];
 
     return (
-        <header className='items-center py-6 mx-auto max-w-screen-2xl' >
+        <header className='bottom-0 items-center py-6 mx-auto max-w-screen-2xl' >
             <nav className='flex justify-between'>
                 {/* left side  */}
                 <div className='flex gap-x-4 md:gap-x-6'>
@@ -36,7 +36,7 @@ function Navbar() {
 
                 {/* right side */}
 
-                <div className='relative flex gap-4 border border-black'>
+                <div className='relative flex gap-4 '>
                     {
                         currentUser ?
                             <>
@@ -52,7 +52,7 @@ function Navbar() {
                                             <ul className="py-2">
                                                 {
                                                     navigation.map((item) => (
-                                                        <li key={item.name} onClick={()=>setIsDropDownOpen(false)}>
+                                                        <li key={item.name} onClick={() => setIsDropDownOpen(false)}>
                                                             <Link to={item.href} className="block px-4 py-2 text-sm hover:bg-gray-200">
                                                                 {item.name}
                                                             </Link>
