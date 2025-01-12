@@ -2,17 +2,17 @@ import React from 'react'
 import { FiShoppingCart } from 'react-icons/fi'
 import { getImgUrl } from '../../utils/getImgUrl'
 
-import { Link } from'react-router-dom'
+import { Link } from 'react-router-dom'
 
-// import { useDispatch } from'react-redux'
-// import { addToCart } from '../../redux/features/cart/cartSlice'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../redux/features/cartSlice.jsx'
 
-const BookCard = ({book}) => {
-    // const dispatch =  useDispatch();
+const BookCard = ({ book }) => {
+    const dispatch = useDispatch();
 
-    // const handleAddToCart = (product) => {
-    //     dispatch(addToCart(product))
-    // }
+    const handleAddToCart = (product) => {
+        dispatch(addToCart(product))
+    }
     return (
         <div className="transition-shadow duration-300 rounded-lg ">
             <div
@@ -31,17 +31,17 @@ const BookCard = ({book}) => {
                 <div>
                     <Link to={`/books/${book._id}`}>
                         <h3 className="mb-3 text-xl font-semibold hover:text-blue-600">
-                       {book?.title}
+                            {book?.title}
                         </h3>
                     </Link>
                     <p className="mb-5 text-gray-600">{book?.description.length > 80 ? `${book.description.slice(0, 80)}...` : book?.description}</p>
                     <p className="mb-5 font-medium">
                         ${book?.newPrice} <span className="ml-2 font-normal line-through">$ {book?.oldPrice}</span>
                     </p>
-                    <button 
-                    // onClick={() => handleAddToCart(book)}
-                    className="flex items-center gap-1 px-6 space-x-1 btn-primary ">
-                        <FiShoppingCart className="" />
+                    <button
+                        onClick={() => handleAddToCart(book)}
+                        className="flex items-center gap-1 px-6 space-x-1 btn-primary ">
+                        <FiShoppingCart />
                         <span>Add to Cart</span>
                     </button>
                 </div>

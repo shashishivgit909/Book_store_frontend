@@ -6,6 +6,7 @@ import { IoMdPerson } from "react-icons/io";
 import { IoCart } from "react-icons/io5";
 import avtarImg from "../assets/avatar.png";
 import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
     const currentUser = false;
@@ -16,6 +17,9 @@ function Navbar() {
         { name: "Add to Cart", href: "/addToCart" },
         { name: "Log Out", href: "/logout" },
     ];
+
+    const cartItems=useSelector((state)=>state.cart.cartItems);
+    // console.log(cartItems,"cartItems");
 
     return (
         <header className='bottom-0 items-center py-6 mx-auto max-w-screen-2xl' >
