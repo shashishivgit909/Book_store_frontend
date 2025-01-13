@@ -18,7 +18,11 @@ function Navbar() {
         { name: "Log Out", href: "/logout" },
     ];
 
-    const cartItems=useSelector((state)=>state.cart.cartItems);
+    // note: The component re-renders when cartItems changes because the useSelector hook subscribes to the Redux store and 
+    // triggers a re-render whenever the selected slice of state (state.cart.cartItems) updates. This behavior occurs regardless 
+    // of the variable type because useSelector is specifically designed to monitor and react to changes in the Redux state.
+    const cartItems=useSelector((state)=>state.cart.cartItems); 
+       
     // console.log(cartItems,"cartItems");
 
     return (
@@ -81,7 +85,7 @@ function Navbar() {
                     </button>
                     <NavLink to="/cart" className='flex items-center p-1 bg-primary'>
                         <IoCart />
-                        <span>0</span>
+                        <span>{cartItems.length}</span>
                     </NavLink>
 
                 </div>
