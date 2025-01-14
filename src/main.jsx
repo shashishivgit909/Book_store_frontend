@@ -6,6 +6,7 @@ import routers from './routers/routers.jsx';
 import { RouterProvider } from 'react-router-dom';
 import { store } from './redux/store.jsx'
 import { Provider } from 'react-redux'
+import 'sweetalert2/dist/sweetalert2.js'
 
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>

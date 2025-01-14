@@ -3,37 +3,47 @@ import App from "../App";
 import Home from "../pages/home/Home";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import CartPage from "../pages/book/CartPage";
+import CheckoutPage from "../pages/book/CheckoutPage";
 
-const routers=createBrowserRouter([
-{
-    path:"/",
-    element:<App/>,
-    children:[
-        {
-            path:"",
-            element:<Home/>
+const routers = createBrowserRouter([
+    {
+        path: "/",
+        element: <App />,
+        children: [
+            {
+                path: "",
+                element: <Home />
 
-        },
-        {
-            path:"/orders",
-            element:<h1>Orders</h1>
+            },
+            {
+                path: "/orders",
+                element: <h1>Orders</h1>
 
-        },
-        {
-            path:"/about",
-            element:<h1>About</h1>
-        },
-        {
-            path:"/login",
-            element:<Login/>
-        },
-        {
-            path:"/register",
-            element:<Register/>
-        }
+            },
+            {
+                path: "/about",
+                element: <h1>About</h1>
+            },
+            {
+                path: "/login",
+                element: <Login />
+            },
+            {
+                path: "/register",
+                element: <Register />
+            },
+            {
+                path: "/cart",
+                element: <CartPage />
+            },
+            {
+                path:"/checkout",
+                element:<CheckoutPage/>
+            }
 
-    ]
-}
+        ]
+    }
 ]);
 
 export default routers;
