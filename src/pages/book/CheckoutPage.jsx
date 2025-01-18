@@ -25,37 +25,37 @@ const CheckoutPage = () => {
     const onSubmit = async (data) => {
         console.log(data, "data");
 
-        // const newOrder = {
-        //     name: data.name,
-        //     email: currentUser?.email,
-        //     address: {
-        //         city: data.city,
-        //         country: data.country,
-        //         state: data.state,
-        //         zipcode: data.zipcode
+        const newOrder = {
+            name: data.name,
+            email: currentUser?.email,
+            address: {
+                city: data.city,
+                country: data.country,
+                state: data.state,
+                zipcode: data.zipcode
 
-        //     },
-        //     phone: data.phone,
-        //     productIds: cartItems.map(item => item?._id),
-        //     totalPrice: totalPrice,
-        // }
-
-        try {
-            await createOrder(newOrder).unwrap();
-            Swal.fire({
-                title: "Confirmed Order",
-                text: "Your order placed successfully!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, It's Okay!"
-            });
-            navigate("/orders")
-        } catch (error) {
-            // console.error("Error place an order", error);
-            // alert("Failed to place an order")
+            },
+            phone: data.phone,
+            productIds: cartItems.map(item => item?._id),
+            totalPrice: totalPrice,
         }
+
+        // try {
+        //     await createOrder(newOrder).unwrap();
+        //     Swal.fire({
+        //         title: "Confirmed Order",
+        //         text: "Your order placed successfully!",
+        //         icon: "warning",
+        //         showCancelButton: true,
+        //         confirmButtonColor: "#3085d6",
+        //         cancelButtonColor: "#d33",
+        //         confirmButtonText: "Yes, It's Okay!"
+        //     });
+        //     navigate("/orders")
+        // } catch (error) {
+        //     console.error("Error place an order", error);
+        //     alert("Failed to place an order")
+        // }
     }
 
     // if(isLoading) return <div>Loading....</div>
@@ -69,7 +69,6 @@ const CheckoutPage = () => {
                             <p className="mb-2 text-gray-500">Total Price: ${totalPrice}</p>
                             <p className="mb-6 text-gray-500">Items: {cartItems.length > 0 ? cartItems.length : 0}</p>
                         </div>
-
 
                         <div className="p-4 px-4 mb-6 bg-white rounded shadow-lg md:p-8">
                             <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4 my-8 text-sm gap-y-2 lg:grid-cols-3">
@@ -92,7 +91,7 @@ const CheckoutPage = () => {
                                             <input
 
                                                 type="text" name="email" id="email" className="w-full h-10 px-4 mt-1 border rounded bg-gray-50"
-                                                disabled
+                                                disabled    // this makes input filed disbale to give any input
                                                 defaultValue={currentUser?.email}
                                                 placeholder="email@domain.com" />
                                         </div>
@@ -196,3 +195,59 @@ const CheckoutPage = () => {
 }
 
 export default CheckoutPage
+
+
+
+
+/*
+NOte: VVVI: Best Approach: Way to use React hook form for evrything in form  
+
+import { useForm } from "react-hook-form";
+
+function MyForm({ currentUser }) {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const isChecked = watch("billing_same");
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 gap-4 my-8 text-sm gap-y-2 lg:grid-cols-3">
+      <div className="text-gray-600">
+        <p className="text-lg font-medium">Personal Details</p>
+        <p>Please fill out all the fields.</p>
+      </div>
+
+      <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 gap-4 text-sm gap-y-2 md:grid-cols-5">
+          <div className="md:col-span-5">
+            <label htmlFor="name">Full Name</label>
+            <input
+              {...register("name", { required: "Name is required" })}
+              type="text"
+              id="name"
+              className="w-full h-10 px-4 mt-1 border rounded bg-gray-50"
+            />
+            {errors.name && <p className="text-red-600">{errors.name.message}</p>}
+          </div>
+
+          <div className="md:col-span-5">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="text"
+              id="email"
+              className="w-full h-10 px-4 mt-1 border rounded bg-gray-50"
+              disabled
+              defaultValue={currentUser?.email}
+            />
+          </div>
+
+          </div>
+          </div>
+        </form>
+      );
+    }
+    
+    
+*/
