@@ -8,20 +8,12 @@ import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 import BookCard from '../book/BookCard';
+import { useGetAllBooksQuery } from '../../redux/features/books/bookApis.js';
 
 function Recomended() {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    fetch("/books.json") // Ensure this path matches your file location in the public folder
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => setBooks(data))
-  }, []);
+ 
+const {data:books=[],isError,error}=useGetAllBooksQuery();
+console.log(books , isError,"boks in recomed")
   return (
     <div className='py-10'>
       <h1 className='mt-1 text-2xl font-semibold'>Recomended for you</h1>
@@ -53,7 +45,8 @@ function Recomended() {
         className="mySwiper"
       >
         {
-          books.length > 0 ? books.slice(8, 16).map((book, index) => {
+          books.length > 0 ? books.slice(1, 16).map((book, index) => {
+            
             return (
               <SwiperSlide key={index}>
                 <BookCard book={book} />

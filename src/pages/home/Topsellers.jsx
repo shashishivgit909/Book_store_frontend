@@ -10,28 +10,25 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
-
+import { useGetAllBooksQuery } from '../../redux/features/books/bookApis.js';
 
 function Topsellers() {
-  const [books, setBooks] = useState([]);
+
   const [selectedCategory, setSelectedCategory] = useState("Choose a genre");
   const categories = ["Choose a genre", "Business", "Fiction", "Horror", "Adventure"];
 
 
-  useEffect(() => {
-    fetch("/books.json") // Ensure this path matches your file location in the public folder
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => setBooks(data))
-  }, []);
+  // It renames data to books for easier reference in the component. If data is undefined (e.g., while waiting for the query to complete), it defaults to an empty array ([]).
+  const { data: books = [], isLoading, isError, error } = useGetAllBooksQuery();
+
+  // useEffect(() => {
+  //   console.log({ books, isLoading, isError, error });
+  // }, [books, isLoading, isError, error]);
+
 
   const filteredBooks = selectedCategory === "Choose a genre" ? books : books.filter(book => book.category === selectedCategory.toLowerCase());
 
-  console.log(filteredBooks, "books")
+
 
   return (
 
