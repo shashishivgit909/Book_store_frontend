@@ -5,24 +5,30 @@ import { CiHeart } from "react-icons/ci";
 import { IoMdPerson } from "react-icons/io";
 import { IoCart } from "react-icons/io5";
 import avtarImg from "../assets/avatar.png";
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useAuth } from '../context/AuthContext';
 
 function Navbar() {
-    const currentUser = false;
     const [isDropDownOpen, setIsDropDownOpen] = useState(false);
     const navigation = [
         { name: "Dashboard", href: "/Dashboard" },
         { name: "Orders", href: "/Orders" },
         { name: "Add to Cart", href: "/addToCart" },
-        { name: "Log Out", href: "/logout" },
+        // { name: "Log Out", href: "/logout" },
     ];
+    const { currentUser, logout } = useAuth();
+    const navigate = useNavigate();
+    const handleLogout = async () => {
+        logout();
+        // navigate("/login");
+    }
 
     // note: The component re-renders when cartItems changes because the useSelector hook subscribes to the Redux store and 
     // triggers a re-render whenever the selected slice of state (state.cart.cartItems) updates. This behavior occurs regardless 
     // of the variable type because useSelector is specifically designed to monitor and react to changes in the Redux state.
-    const cartItems=useSelector((state)=>state.cart.cartItems); 
-       
+    const cartItems = useSelector((state) => state.cart.cartItems);
+
     // console.log(cartItems,"cartItems");
 
     return (
@@ -66,7 +72,11 @@ function Navbar() {
                                                             </Link>
                                                         </li>
                                                     ))
+
                                                 }
+                                                <li>
+                                                    <button onClick={handleLogout} className='block w-full px-4 py-2 text-left sm textpx-4 hover:bg-red-500'>Logout</button>
+                                                </li>
 
                                             </ul>
                                         </div>
