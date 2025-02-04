@@ -2,15 +2,18 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router-dom';
-// import { useAuth } from '../../context/AuthContext';
+import { useCreateOrderMutation } from '../../redux/features/orders/orderApis'; 
+import { useAuth } from '../../context/AuthContext';
 
 import Swal from 'sweetalert2';
 // import { useCreateOrderMutation } from '../../redux/features/orders/ordersApi';
 
 const CheckoutPage = () => {
+    // const [createAOrder,{isLoading}]=useCreateOrderMutation();
+    console.log(useCreateOrderMutation());
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2);
-    const currentUser = true;  //TODO get user from Auth
+    const {currentUser} = useAuth();  //TODO get user from Auth
     const {
         register,
         handleSubmit,
@@ -18,12 +21,12 @@ const CheckoutPage = () => {
         formState: { errors },
     } = useForm()
 
-    // const [createOrder, {isLoading, error}] = useCreateOrderMutation();
+    const [createOrder, {isLoading, error}] = useCreateOrderMutation();
     // const navigate =  useNavigate()
 
     const [isChecked, setIsChecked] = useState(false)
     const onSubmit = async (data) => {
-        console.log(data, "data");
+        // console.log(data, "data");
 
         const newOrder = {
             name: data.name,
@@ -37,7 +40,13 @@ const CheckoutPage = () => {
             },
             phone: data.phone,
             productIds: cartItems.map(item => item?._id),
-            totalPrice: totalPrice,
+            totalPrice: totalPrice, 
+        }
+
+        try {
+            
+        } catch (error) {
+
         }
 
         // try {

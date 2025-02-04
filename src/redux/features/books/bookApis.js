@@ -3,6 +3,15 @@ import getBaseUrl from '../../../utils/baseURL';
 import { deleteABook, UpdateBook } from '../../../../../../backend/Book_store_Backend/controllers/controler';
 
 
+
+//note:1. { credentials: "include"}
+//  option in your fetchBaseQuery setup is used to ensure that cookies are sent along with the request.
+// This is particularly important for handling sessions, authentication, or any server-side mechanism that relies on cookies for 
+// tracking user states (such as an authentication token stored in a cookie).
+
+//2. Customizing Headers (If Needed):
+//If, in some cases, you need to add specific headers for certain endpoints (e.g., a different authorization scheme or a special 
+// header for a specific query), you can always override the prepareHeaders for that particular endpoint, but that's not needed if the logic for all endpoints is the same (which is your case).
 const baseQuery = fetchBaseQuery({
     baseUrl: `${getBaseUrl()}/api`,
     credentials: "include",

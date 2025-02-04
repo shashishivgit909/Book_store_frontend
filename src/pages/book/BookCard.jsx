@@ -5,7 +5,7 @@ import { getImgUrl } from '../../utils/getImgUrl'
 import { Link } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../../redux/features/cartSlice.jsx'
+import { addToCart } from '../../redux/features/cart/cartSlice.jsx'
 
 const BookCard = ({ book }) => {
     const dispatch = useDispatch();
