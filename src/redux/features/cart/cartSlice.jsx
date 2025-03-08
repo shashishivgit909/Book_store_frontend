@@ -12,6 +12,7 @@ export const cartSlice = createSlice({
             const isExisting = state.cartItems.find((item) => item._id === action.payload._id);
             if (!isExisting) {
                 state.cartItems.push(action.payload);
+                // this is used for notification popUp called Sweet Alert.
                 Swal.fire({
                     position: "top-end",
                     icon: "success",

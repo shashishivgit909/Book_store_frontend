@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateOrderMutation } from '../../redux/features/orders/orderApis'; 
+import { useCreateOrderMutation } from '../../redux/features/orders/orderApis';
 import { useAuth } from '../../context/AuthContext';
+import "../../App.css";
 
 import Swal from 'sweetalert2';
 // import { useCreateOrderMutation } from '../../redux/features/orders/ordersApi';
@@ -13,7 +14,7 @@ const CheckoutPage = () => {
     console.log(useCreateOrderMutation());
     const cartItems = useSelector(state => state.cart.cartItems);
     const totalPrice = cartItems.reduce((acc, item) => acc + item.newPrice, 0).toFixed(2);
-    const {currentUser} = useAuth();  //TODO get user from Auth
+    const { currentUser } = useAuth();  //TODO get user from Auth
     const {
         register,
         handleSubmit,
@@ -21,12 +22,14 @@ const CheckoutPage = () => {
         formState: { errors },
     } = useForm()
 
-    const [createOrder, {isLoading, error}] = useCreateOrderMutation();
+    const [createOrder, { isLoading, error }] = useCreateOrderMutation();
     // const navigate =  useNavigate()
 
-    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(false);
+    console.log(isChecked, "ischecked");
+
     const onSubmit = async (data) => {
-        // console.log(data, "data");
+        console.log(data, "data");
 
         const newOrder = {
             name: data.name,
@@ -40,13 +43,7 @@ const CheckoutPage = () => {
             },
             phone: data.phone,
             productIds: cartItems.map(item => item?._id),
-            totalPrice: totalPrice, 
-        }
-
-        try {
-            
-        } catch (error) {
-
+            totalPrice: totalPrice,
         }
 
         // try {
@@ -70,7 +67,7 @@ const CheckoutPage = () => {
     // if(isLoading) return <div>Loading....</div>
     return (
         <section>
-            <div className="flex items-center justify-center min-h-screen p-6 bg-gray-100">
+            {/* <div className="flex items-center justify-center min-h-screen p-6 bg-gray-100">
                 <div className="container max-w-screen-lg mx-auto">
                     <div>
                         <div>
@@ -165,7 +162,9 @@ const CheckoutPage = () => {
                                             <label htmlFor="zipcode">Zipcode</label>
                                             <input
                                                 {...register("zipcode", { required: true })}
-                                                type="text" name="zipcode" id="zipcode" className="flex items-center w-full h-10 px-4 mt-1 transition-all border rounded bg-gray-50" placeholder="" />
+                                                type="text" name="zipcode" id="zipcode"
+                                                className="flex items-center w-full h-10 px-4 mt-1 transition-all border rounded bg-gray-50"
+                                                placeholder="" />
                                         </div>
 
                                         <div className="mt-3 md:col-span-5">
@@ -173,8 +172,12 @@ const CheckoutPage = () => {
                                                 <input
                                                     onChange={(e) => setIsChecked(e.target.checked)}
                                                     type="checkbox" name="billing_same" id="billing_same" className="form-checkbox" />
-                                                <label htmlFor="billing_same" className="ml-2 ">I am aggree to the <Link className='text-blue-600 underline underline-offset-2'>Terms & Conditions</Link> and <Link className='text-blue-600 underline underline-offset-2'>Shoping Policy.</Link></label>
+                                                <label htmlFor="billing_same" className="ml-2 ">I am aggree to the
+                                                    <Link className='text-blue-600 underline underline-offset-2'>Terms & Conditions</Link> and
+                                                    <Link className='text-blue-600 underline underline-offset-2'>Shoping Policy.</Link></label>
                                             </div>
+
+                                            <p>checked ...{isChecked}</p>
                                         </div>
 
 
@@ -182,8 +185,10 @@ const CheckoutPage = () => {
                                         <div className="text-right md:col-span-5">
                                             <div className="inline-flex items-end">
                                                 <button
-                                                    disabled={!isChecked}
-                                                    className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">Place an Order</button>
+                                                    // disabled={!isChecked}
+                                                    className=`px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 `>
+                                                    Place an Order
+                                                </button>
                                             </div>
                                         </div>
 
@@ -198,7 +203,7 @@ const CheckoutPage = () => {
 
 
                 </div>
-            </div>
+            </div> */}
         </section>
     )
 }

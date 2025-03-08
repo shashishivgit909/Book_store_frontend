@@ -63,3 +63,8 @@
    right: -20px; /* Adjust for desired positioning */
  }
  
+ .button:disabled {
+   opacity: 0.5;  /* Adjust to indicate the button is disabled */
+   cursor: not-allowed;
+   background: #fff;
+ }

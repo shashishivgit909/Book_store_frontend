@@ -7,6 +7,8 @@ import CartPage from "../pages/book/CartPage";
 import CheckoutPage from "../pages/book/CheckoutPage";
 import SingleBook from "../pages/book/SingleBook";
 import PrivateRoute from "./PrivateRoute";
+import DropdownPractice from "../components/DropdownPractice";
+import Scorlbar from "../pages/Scorlbar";
 
 const routers = createBrowserRouter([
     {
@@ -49,6 +51,15 @@ const routers = createBrowserRouter([
             {
                 path: "/books/:id",
                 element: <SingleBook />
+            },
+            {
+                path:"/dropdownForm",
+                element:<DropdownPractice/>
+            },
+
+            {
+                path:"/scrollbar",
+                element:<Scorlbar/>
             }
 
         ]

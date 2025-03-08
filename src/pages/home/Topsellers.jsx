@@ -52,9 +52,12 @@ function Topsellers() {
         </div>
       </div>
 
+{/*Note:  taken from swipper library and modified something  :*/}
 
       <Swiper
-        navigation={true}
+
+      // this  navigation={true}  , this line makes > icon to slide : if commneted it will remove from slider.
+        navigation={true}  
         slidesPerView={1}
         spaceBetween={30}
 
