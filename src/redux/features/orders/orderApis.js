@@ -17,18 +17,29 @@ export const orderApi = createApi({
     reducerPath: "orderApi",
     tagTypes: ["Orders"],
     baseQuery: baseQuery,
-    endpoints: (builder) => ({
-        createOrder: builder.mutation({
-            query: (newOrder) => ({
-                url: "/createOrder",
-                method: "POST",
-                body: newOrder
-            })
+    endpoints: (builder) =>
+    ({
+        createOrder: builder.mutation
+            ({
+                query: (newOrder) => ({
+                    url: "/createOrder",
+                    method: "POST",
+                    body: newOrder
+                }),
+                invalidatesTags: ["Orders"]
+            }),
+        getOrderByEmail: (builder.query)({
+            query: (email) => ({
+                url: `/email/${email}`,
+                method: "GET"
+            }),
+            providesTags: ['Orders']
         })
     })
 })
 
 export const
     {
-        useCreateOrderMutation
+        useCreateOrderMutation,
+        useGetOrderByEmailQuery
     } = orderApi;
