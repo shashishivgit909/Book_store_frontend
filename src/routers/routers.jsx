@@ -6,6 +6,7 @@ import Register from "../components/Register";
 import CartPage from "../pages/book/CartPage";
 import CheckoutPage from "../pages/book/CheckoutPage";
 import SingleBook from "../pages/book/SingleBook";
+import OrdersPage from "../pages/book/OrdersPage";
 import PrivateRoute from "./PrivateRoute";
 import DropdownPractice from "../components/DropdownPractice";
 import Scorlbar from "../pages/Scorlbar";
@@ -22,7 +23,7 @@ const routers = createBrowserRouter([
             },
             {
                 path: "/orders",
-                element: <h1>Orders</h1>
+                element: <OrdersPage />
 
             },
             {
@@ -53,13 +54,13 @@ const routers = createBrowserRouter([
                 element: <SingleBook />
             },
             {
-                path:"/dropdownForm",
-                element:<DropdownPractice/>
+                path: "/dropdownForm",
+                element: <DropdownPractice />
             },
 
             {
-                path:"/scrollbar",
-                element:<Scorlbar/>
+                path: "/scrollbar",
+                element: <Scorlbar />
             }
 
         ]

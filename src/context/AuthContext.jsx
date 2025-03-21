@@ -14,7 +14,6 @@ const googleProvider = new GoogleAuthProvider();
 export const AuthProvide = ({children}) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [loading, setLoading] = useState(true);
-
     // register a user
     const registerUser = async (email,password) => {
 
