@@ -13,6 +13,7 @@ import Scorlbar from "../pages/Scorlbar";
 import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import AdminLogin from "../components/AdminLogin";
 import AdminRoute from "./AdminRoute";
+import Dashboard from "../pages/dashboard/Dashboard";
 const routers = createBrowserRouter([
     {
         path: "/",
@@ -80,7 +81,7 @@ const routers = createBrowserRouter([
         children: [
             {
                 path: "",
-                element: <DashboardLayout />
+                element:<Dashboard/>
             },
             {
                 path: "add-new-book",
