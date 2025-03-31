@@ -7,7 +7,6 @@ function PrivateRoute({ children }) {
     const navigate =useNavigate();
     if (!currentUser) {
         return <Navigate to="/login" />
-        // navigate("/login");
     } else {
         return children;
     }

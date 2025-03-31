@@ -10,7 +10,9 @@ import OrdersPage from "../pages/book/OrdersPage";
 import PrivateRoute from "./PrivateRoute";
 import DropdownPractice from "../components/DropdownPractice";
 import Scorlbar from "../pages/Scorlbar";
-
+import DashboardLayout from "../pages/dashboard/DashboardLayout";
+import AdminLogin from "../components/AdminLogin";
+import AdminRoute from "./AdminRoute";
 const routers = createBrowserRouter([
     {
         path: "/",
@@ -63,6 +65,35 @@ const routers = createBrowserRouter([
                 element: <Scorlbar />
             }
 
+        ]
+    },
+    {
+        path: "/admin",
+        element: <AdminLogin />
+    },
+
+    {
+        path: "/dashboard",
+        element: <AdminRoute>
+            <DashboardLayout />
+        </AdminRoute>,
+        children: [
+            {
+                path: "",
+                element: <DashboardLayout />
+            },
+            {
+                path: "add-new-book",
+                element: <div>Add new book</div>
+            },
+            {
+                path: "edit-book/:id",
+                element: <div>Edit book</div>
+            },
+            {
+                path: "manage-books",
+                element: <div>Manage Books</div>
+            },
         ]
     }
 ]);

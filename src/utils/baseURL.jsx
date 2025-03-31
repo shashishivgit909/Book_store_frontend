@@ -1,5 +1,5 @@
 const getBaseUrl = () => {
-    return "http://localhost:5000"
+    return "http://localhost:4000"
 }
 
 export default getBaseUrl;
