@@ -14,6 +14,11 @@ import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import AdminLogin from "../components/AdminLogin";
 import AdminRoute from "./AdminRoute";
 import Dashboard from "../pages/dashboard/Dashboard";
+import A from "../components/nestedRoutePractice/A";
+import B from "../components/nestedRoutePractice/B";
+import C1 from "../components/nestedRoutePractice/C1";
+import C2 from "../components/nestedRoutePractice/C2";
+import D from "../components/nestedRoutePractice/D";
 const routers = createBrowserRouter([
     {
         path: "/",
@@ -81,7 +86,7 @@ const routers = createBrowserRouter([
         children: [
             {
                 path: "",
-                element:<Dashboard/>
+                element: <Dashboard />
             },
             {
                 path: "add-new-book",
@@ -95,6 +100,38 @@ const routers = createBrowserRouter([
                 path: "manage-books",
                 element: <div>Manage Books</div>
             },
+        ]
+    },
+
+
+    //for below route object: for route:1.  http://localhost:5173/a/b/c/d  op: insideA
+    // inside b
+    // inside C2
+    // inside D
+
+    // 2.  http://localhost:5173/a/b/c   , op: insideA
+    // inside b
+    // inside C2   and  so on : 
+
+    // 3. for   http://localhost:5173/c , will so 404 error
+    {
+        path: "/a",
+        element: <A />, // ✅ Must have <Outlet />
+        children: [
+            {
+                path: "b",
+                element: <B />, // ✅ Must have <Outlet />
+                children: [
+                    { path: "", element: <C1 /> }, // /dashboard/books
+                    {
+                        path: "c",
+                        element: <C2 />, // ✅ Must have <Outlet />
+                        children: [
+                            { path: "d", element: <D /> } // /dashboard/books/123/edit
+                        ]
+                    }
+                ]
+            }
         ]
     }
 ]);
