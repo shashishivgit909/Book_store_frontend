@@ -5,7 +5,7 @@ const B = () => {
   return (
     <div>
         inside b
-         <Outlet></Outlet>
+         <Outlet/>
     </div>
   )
 }

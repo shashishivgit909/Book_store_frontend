@@ -14,11 +14,14 @@ import DashboardLayout from "../pages/dashboard/DashboardLayout";
 import AdminLogin from "../components/AdminLogin";
 import AdminRoute from "./AdminRoute";
 import Dashboard from "../pages/dashboard/Dashboard";
+import ManageBooks from "../pages/dashboard/manageBooks/ManageBooks";
 import A from "../components/nestedRoutePractice/A";
 import B from "../components/nestedRoutePractice/B";
 import C1 from "../components/nestedRoutePractice/C1";
 import C2 from "../components/nestedRoutePractice/C2";
 import D from "../components/nestedRoutePractice/D";
+import AddBook from "../pages/dashboard/AddBook/AddBook";
+import UpdateBook from "../pages/dashboard/EditBook/UpdateBook";
 const routers = createBrowserRouter([
     {
         path: "/",
@@ -90,15 +93,15 @@ const routers = createBrowserRouter([
             },
             {
                 path: "add-new-book",
-                element: <div>Add new book</div>
+                element:<AddBook/>
             },
             {
                 path: "edit-book/:id",
-                element: <div>Edit book</div>
+                element: <UpdateBook/>
             },
             {
                 path: "manage-books",
-                element: <div>Manage Books</div>
+                element: <ManageBooks/>
             },
         ]
     },

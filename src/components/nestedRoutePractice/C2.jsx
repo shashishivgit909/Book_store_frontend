@@ -4,7 +4,7 @@ const C2 = () => {
   return (
     <div>
       inside C2
-      <Outlet></Outlet>
+      <Outlet/>
     </div>
   )
 }
