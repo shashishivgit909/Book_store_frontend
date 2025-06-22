@@ -12,7 +12,7 @@ import getBaseUrl from '../../../utils/baseURL';
 // header for a specific query), you can always override the prepareHeaders for that particular endpoint, but that's not needed if the logic for all endpoints is the same (which is your case).
 const baseQuery = fetchBaseQuery({
     baseUrl: `${getBaseUrl()}/api`,
-    credentials: "include",
+    credentials: "omit",
     prepareHeaders: (Headers) => {
         const token = localStorage.getItem("token");
         // console.log('Full API URL:', `${getBaseUrl()}/api/getBooks`);

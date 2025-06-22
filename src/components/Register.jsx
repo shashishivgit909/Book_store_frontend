@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form"
 import { useAuth } from '../context/AuthContext';
-// import { registerUser } from "../context/AuthContext";
+
 
 function Register() {
     const [message, setMessage] = useState(" ");
@@ -17,6 +17,7 @@ function Register() {
 
     const onSubmit = async (data) => {
         try {
+            console.log(data, "submit")
             await registerUser(data?.email, data?.password);
             alert("user registered succesfully");
             navigate("/");
@@ -60,7 +61,7 @@ function Register() {
 
                     {/* NOte: since this button has default type : submit in html so here this button act as submit type so trigers onSubmit founction */}
                     <div>
-                        <button className='px-1 py-1 text-white bg-blue-500 rounded font-semi-bold focus:outline-none hover:bg-blue-700'>
+                        <button type="submit" className='px-1 py-1 text-white bg-blue-500 rounded font-semi-bold focus:outline-none hover:bg-blue-700'>
                             Submit</button>
                     </div>
                 </form>
