@@ -14,6 +14,9 @@ const BookCard = ({ book }) => {
         dispatch(addToCart(product))
     }
     
+
+
+    console.log(`${getImgUrl(book?.coverImage)}`, "poter imag")
     return (
         <div className="transition-shadow duration-300 rounded-lg ">
             <div

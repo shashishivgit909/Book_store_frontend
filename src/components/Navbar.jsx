@@ -39,7 +39,7 @@ function Navbar() {
                     <Link to="/"> <HiBars3CenterLeft /></Link>
 
                     {/* serach input */}
-                    <div className="relative border border-red-500">
+                    <div className="relative">
                         <IoIosSearch className='absolute left-0 top-1 b-1' />
                         <input type="text" placeholder='Search here' className='bg-[#EAEAEA] px-6  rounded-md 
                         focus:outline-none' />
